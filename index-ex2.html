@@ -1,0 +1,44 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="app">
+    <div ></br>
+        <button v-on:click='increase(2, $event)'>Click Me</button>
+        <p>{{ counter }}</p>
+        <p v-on:mousemove='updateCoordinates'>Cooridinates: {{x}} / {{ y}}  
+         - <span v-on:mousemove.stop=""> DEAD SPOT</span> - </p>
+        <input type='text' v-on:keyup.enter='alertMe'> 
+    </div>
+    <script>
+    new Vue({
+            el: '#app',
+            data: {
+                    counter: 0,
+                    x: 0,
+                    y: 0,
+                    Name: 'Matt',
+                    Age: '27',
+                    link: 'https://en.wikipedia.org/wiki/Airplane#/media/File:P-51_Mustang_edit1.jpg'
+            },
+            methods: {
+                increase: function(step, event){
+                    this.counter  += step;
+                },
+                mathRandom: function() {
+                    return Math.random();
+                },
+                updateCoordinates: function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+//                dummy: function(event){
+//                    event.stopPropagation();
+//                }
+                alertMe: function(){
+                    alert('Alert!');
+                }
+            }
+    })    
+</script>
+</div>
+
+ 
